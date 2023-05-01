@@ -30,4 +30,16 @@ foreach ($users as $user) {
     echo $user->ID . " " . $user->Nama . " " . $user->Alamat . " " . $user->Jabatan;
     echo "<br>";
 }
+// query untuk menghitung jumlah user
+$sql = "SELECT COUNT(*) as total_user FROM nama_tabel_user";
+$result = $conn->query($sql);
+
+// menampilkan hasil query
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    echo "Total user: " . $row["total_user"];
+  }
+} else {
+  echo "Tidak ada user";
+}
 ?>
